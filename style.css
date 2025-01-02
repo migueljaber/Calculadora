@@ -1,48 +1,129 @@
-*{
+body {
+    background: #998888;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
     margin: 0;
-    padding: 0;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
 }
 
-.fundo{
-    background-image: linear-gradient(45deg, black, rgb(0, 101, 141));
-    height: 100vh;
-    color: #fff;
-    font-family: Arial, Helvetica, sans-serif;
-    text-align: center;
+.calculator {
+    background: #000000;
+    border-radius: 40px;
+    padding: 20px;
+    width: 320px;
+    box-shadow: 0 0 30px rgba(0,0,0,0.3);
+    transition: transform 0.3s ease, width 0.3s ease;
+    position: relative;
 }
 
-.calculadora{
-    position: absolute;
-    background-color: rgba(0, 0, 0, 0.7);
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    border-radius: 15px;
-    padding: 15px;
+.calculator.expanded {
+    width: 480px;
+    transform: translateX(80px);
 }
 
-.botão{
-    width: 50px;
-    height: 50px;
-    margin: 2px;
-    font-size: 25px;
-    cursor: pointer;
-    background-color: rgb(31, 31, 31);
-    border: none;
-    color: #fff;
-}
 
-.botão:hover{
-    background-color: black;
-}
-
-#resultado{
-    width: 207px;
-    background-color: #fff;
-    height: 30px;
-    margin: 5px;
-    padding: 5px;
-    font-size: 25px;
-    color: black;
+.display {
+    background: #000000;
+    padding: 30px 20px;
     text-align: right;
+    border-radius: 20px;
+}
+
+.previous-operand {
+    color: rgba(255,255,255,0.7);
+    font-size: 1.5rem;
+    min-height: 30px;
+}
+
+.current-operand {
+    color: white;
+    font-size: 3rem;
+    margin: 10px 0;
+    word-wrap: break-word;
+    word-break: break-all;
+}
+
+.buttons {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+    margin-top: 20px;
+}
+
+.expanded .buttons {
+    grid-template-columns: repeat(6, 1fr);
+}
+
+button {
+    direction: ltr; 
+    border: none;
+    padding: 20px;
+    font-size: 1.5rem;
+    border-radius: 50%;
+    cursor: pointer;
+    outline: none;
+    color: white;
+    transition: 0.3s;
+}
+
+.operation {
+    background: #f1a33c;
+}
+
+.operation:active {
+    background: #d99235;
+}
+
+.number {
+    background: #333333;
+}
+
+.number:active {
+    background: #404040;
+}
+
+.clear, .plusMinus, .percentage, .expand {
+    background: #a5a5a5;
+    color: black;
+}
+
+.clear:active, .plusMinus:active, .percentage:active, .expand:active {
+    background: #8c8c8c;
+}
+
+.equals {
+    background: #f1a33c;
+}
+
+.equals:active {
+    background: #d99235;
+}
+
+.scientific {
+    display: none;
+    background: #444444;
+}
+
+.expanded .scientific {
+    display: block;
+}
+
+.expand {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    width: 40px;
+    height: 40px;
+    padding: 10px;
+    font-size: 1.2rem;
+}
+
+/* Estilo específico para o botão zero */
+.number[data-value="0"] {
+    grid-column: span 2;
+    border-radius: 25px;
+    text-align: left;
+    padding-left: 30px;
 }
